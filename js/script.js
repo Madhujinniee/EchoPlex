@@ -53,11 +53,7 @@ async function getSongs(folder) {
     Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
         e.addEventListener("click", element => {
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
-
-        })
-    })
-
-    play.addEventListener("click", () => {
+play.addEventListener("click", () => {
         if (currentSong.paused) {
             currentSong.play()
             play.src = "img/pause.svg"
@@ -67,6 +63,9 @@ async function getSongs(folder) {
             play.src = "img/play.svg"
         }
     })
+        })
+    })
+
     return songs
 }
 
