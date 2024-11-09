@@ -41,7 +41,7 @@ async function getSongs(folder) {
         songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" width="34" src="img/music.svg" alt="">
                             <div class="info">
                                 <div> ${song.replaceAll("%20", " ")}</div>
-                                <div>Harry</div>
+                                <div></div>
                             </div>
                             <div class="playnow">
                                 <span>Play Now</span>
@@ -55,16 +55,6 @@ async function getSongs(folder) {
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
 
         })
-        play.addEventListener("click", () => {
-        if (currentSong.paused) {
-            currentSong.play()
-            play.src = "img/pause.svg"
-        }
-        else {
-            currentSong.pause()
-            play.src = "img/play.svg"
-        }
-    })
     })
 
     return songs
@@ -75,11 +65,6 @@ const playMusic = (track, pause = false) => {
     if (!pause) {
         currentSong.play()
         play.src = "img/pause.svg"
-    }
-    else
-    {
-        currentSong.play()
-        play.src = "img/play.svg"
     }
     document.querySelector(".songinfo").innerHTML = decodeURI(track)
     document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
@@ -132,7 +117,7 @@ async function displayAlbums() {
 
 async function main() {
     // Get the list of all the songs
-    await getSongs("songs/Angry_(mood)")
+    await getSongs("songs/ncs")
     playMusic(songs[0], true)
 
     // Display all the albums on the page
